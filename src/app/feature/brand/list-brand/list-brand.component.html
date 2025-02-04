@@ -1,0 +1,78 @@
+
+<div class="row" >
+    <mat-form-field class="col-md-3" style="background-color: white !important;">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="...." #input>
+    </mat-form-field>
+  
+    <div class="col-md-8"></div>
+<!--   
+    <a routerLink="/laptop/add" class="btn btn-primary primary_button  " >
+      <mat-icon>add_box</mat-icon>
+    </a>
+   -->
+  </div>
+  
+  
+  <div class="table-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="loadData()">
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="brand_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+        <td mat-cell *matCellDef="let row"> {{row.brand_id}} </td>
+      </ng-container>
+  
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="brand_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let row"> {{row.brand_name}} </td>
+      </ng-container>
+  
+      <!-- Fruit Column -->
+      <ng-container matColumnDef="Image">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Image </th>
+        <td mat-cell *matCellDef="let row"> <img [width]="80" [height]="40" [src]="imagePath + row.image" alt="Image" /> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let row">
+          <mat-icon *ngIf="row.status === 1" color="primary">check_circle</mat-icon>
+          <mat-icon *ngIf="row.status !== 1" color="warn">cancel</mat-icon>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="Action">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+        <td  mat-cell *matCellDef="let row">
+          <div class="action-buttons">
+            <!-- <a [routerLink]="['/laptop/edit', row.id]" mat-icon-button color="accent" >
+              <mat-icon>edit</mat-icon>
+            </a>
+            <button mat-icon-button color="accent" >
+              <mat-icon>info</mat-icon>
+            </button> -->
+            <button mat-icon-button color="primary">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+  
+  
+  </div>
+  
+  <mat-paginator (page)="loadData()" [length]="resultsLength" [pageSizeOptions]="[10]" showFirstLastButtons ></mat-paginator>
+  
+  

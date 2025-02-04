@@ -1,0 +1,31 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.table-container{
+
+  height: 640px;
+  overflow: auto;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px; /* Khoảng cách giữa các nút */
+}
+
+/*.mat-mdc-table{*/
+/*  background-color: #F5F5F5;*/
+/*  color: #0a0e14 !important;*/
+/*}*/
+/*.mat-mdc-row{*/
+/*  color: #0a0e14 !important;*/
+/*}*/

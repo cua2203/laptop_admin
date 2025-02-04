@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.primary_button {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-canvas {
+  width: 100% !important;
+  height: 400px !important; /* Đặt chiều cao cố định, hoặc điều chỉnh theo nhu cầu */
+}
+.pie-chart-canvas {
+  width: 400px !important;
+  height: 400px !important;
+}
+
+@media (max-width: 768px) {
+  .chart-canvas {
+    height: 300px !important; /* Điều chỉnh chiều cao cho màn hình nhỏ */
+  }
+}
+

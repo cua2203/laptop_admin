@@ -1,0 +1,99 @@
+<div class="col-sm-12 col-md-6 col-lg-6">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput  formControlName="laptop_name" placeholder="Enter your name" />
+      <mat-error *ngIf="form.get('laptop_name')?.hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Image</mat-label>
+      <input type="file" (change)="onFileSelected($event)" style="display: none" #fileInput />
+      <input matInput  formControlName="image" placeholder="Choose a file" readonly />
+      <button mat-icon-button matSuffix (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+    </mat-form-field>
+
+
+    <mat-form-field class="w-50">
+      <mat-label>Brand</mat-label>
+      <mat-select formControlName="brand_id" name="brand_id">
+        <!--        <mat-option>None</mat-option>-->
+        <mat-option *ngFor="let brand of brands" [value]="brand.brand_id">
+          {{brand.brand_name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('brand_id')?.hasError('required')">
+        Brand is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-50">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category_id" name="category_id">
+        <!--        <mat-option>None</mat-option>-->
+        <mat-option *ngFor="let category of categories" [value]="category.category_id">
+          {{category.category_name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('category_id')?.hasError('required')">
+        Category is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-50">
+      <mat-label>Ram</mat-label>
+      <mat-select formControlName="ram" name="ram">
+        <mat-option [value]="8">8GB</mat-option>
+        <mat-option [value]="16">16GB</mat-option>
+        <mat-option [value]="32">32GB</mat-option>
+        <mat-option [value]="64">64GB</mat-option>
+        <mat-option [value]="128">128GB</mat-option>
+
+      </mat-select>
+      <mat-error *ngIf="form.get('ram')?.hasError('required')">
+        Ram is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-50">
+      <mat-label>Storage</mat-label>
+      <mat-select formControlName="storage" name="storage">
+
+        <mat-option [value]="128">128GB</mat-option>
+        <mat-option [value]="256">256GB</mat-option>
+        <mat-option [value]="512">512GB</mat-option>
+        <mat-option [value]="1">1T</mat-option>
+
+      </mat-select>
+      <mat-error *ngIf="form.get('storage')?.hasError('required')">
+        Storage is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="fill">
+      <mat-label>Cpu</mat-label>
+      <input matInput  formControlName="cpu" placeholder="ryzen 5 4500U" />
+      <mat-error *ngIf="form.get('cpu')?.hasError('required')">
+        Cpu is required
+      </mat-error>
+    </mat-form-field>
+
+    <!--    [disabled]="form.invalid"-->
+    <button mat-raised-button color="accent" type="submit"  >
+      Submit
+    </button>
+
+    <a mat-raised-button color="primary" routerLink="/laptop/"   >
+      Cancel
+    </a>
+  </form>
+
+
+</div>
+
+

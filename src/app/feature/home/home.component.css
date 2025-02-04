@@ -1,0 +1,12 @@
+.border_box {
+  border: 1px solid black;
+  border-radius: 5px;
+
+}
+
+.result_box {
+  height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
